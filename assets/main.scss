@@ -1,0 +1,24 @@
+---
+---
+
+@import "minima";
+
+dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: .5rem;
+    margin-bottom: 0;
+}
+
+dt {
+    grid-column: 1;
+    font-weight: bold;
+    text-align: right;
+}
+dt::after {
+    content: ':';
+}
+
+dd {
+    grid-column: 2;
+}
