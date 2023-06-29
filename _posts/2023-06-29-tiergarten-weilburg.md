@@ -1,10 +1,13 @@
 ---
 layout: location
-title: Tierpark Weilburg
+title: Tiergarten Weilburg
 date: 2023-06-29 20:57:31 +0200
 categories: zoo
 visits: 
 - 2023-06-29
+street: Tiergartenstraße 12
+zip: 35781
+city: Weilburg
 ext_url: https://www.hessen-forst.de/freizeit/tiergarten-weilburg
 accessible: yes
 dogs: no
