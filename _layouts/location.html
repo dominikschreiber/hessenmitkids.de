@@ -21,7 +21,14 @@ layout: post
         <th>Hunde erlaubt</th>
         <td>{% if page.dogs %}ja{% else %}nein{% endif %}</td>
     </tr>
-    <tr>
+    {% if page.street and page.zip and page.city %}<tr>
+        <th>Adresse</th>
+        <td><address>
+            {{page.street}}<br>
+            {{page.zip}} {{page.city}}
+        </address></td>
+    </tr>{% endif %}
+    {% if page.hours %}<tr>
         <th>Öffnungszeiten</th>
         <td>
             <dl>{% for _ in page.hours %}
@@ -29,8 +36,8 @@ layout: post
                 <dd>{{ _[1] }}</dd>
             {% endfor %}</dl>
         </td>
-    </tr>
-    <tr>
+    </tr>{% endif %}
+    {% if page.pricing %}<tr>
         <th>Eintritt</th>
         <td>
             <dl>{% for _ in page.pricing %}
@@ -38,9 +45,9 @@ layout: post
                 <dd>{{ _[1] }}</dd>
             {% endfor %}</dl>
         </td>
-    </tr>
-    <tr>
+    </tr>{% endif %}
+    {% if page.ext_url %}<tr>
         <th>URL</th>
         <td><a href="{{ page.ext_url }}">{{ page.ext_url }}</a></td>
-    </tr>
+    </tr>{% endif %}
 </table>
