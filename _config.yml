@@ -28,6 +28,9 @@ permalink: /:slugified_categories/:slug
 
 # Build settings
 theme: minima
+minima:
+  skin: auto
+
 plugins:
   - jekyll-feed
 
