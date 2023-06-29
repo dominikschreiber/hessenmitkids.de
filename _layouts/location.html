@@ -1,0 +1,46 @@
+---
+layout: post
+---
+
+<h2>Meine Impression</h2>
+
+{{content}}
+
+<h2>Schnelle Fakten</h2>
+
+<table>
+    <tr>
+        <th>Zuletzt besucht</th>
+        <td>{{ page.visits | last }} ({{ page.visits | size }}&times;)</td>
+    </tr>
+    <tr>
+        <th>Kinderwagengerecht</th>
+        <td>{% if page.accessible %}ja{% else %}nein{% endif %}</td>
+    </tr>
+    <tr>
+        <th>Hunde erlaubt</th>
+        <td>{% if page.dogs %}ja{% else %}nein{% endif %}</td>
+    </tr>
+    <tr>
+        <th>Öffnungszeiten</th>
+        <td>
+            <dl>{% for _ in page.hours %}
+                <dt>{{ _[0] }}</dt>
+                <dd>{{ _[1] }}</dd>
+            {% endfor %}</dl>
+        </td>
+    </tr>
+    <tr>
+        <th>Eintritt</th>
+        <td>
+            <dl>{% for _ in page.pricing %}
+                <dt>{{ _[0] }}</dt>
+                <dd>{{ _[1] }}</dd>
+            {% endfor %}</dl>
+        </td>
+    </tr>
+    <tr>
+        <th>URL</th>
+        <td><a href="{{ page.ext_url }}">{{ page.ext_url }}</a></td>
+    </tr>
+</table>
