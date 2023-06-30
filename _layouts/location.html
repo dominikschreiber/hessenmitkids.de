@@ -5,7 +5,7 @@
         {%- include header.html -%}
         <main class="ds-page-content" aria-label="Content">
             <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-                <header class="ds-post-header" style="--bg: url('{% link {{page.img_url}} %}')">
+                <header class="ds-post-header" style="--bg: url('{% link {{ page.img_url }} %}')">
                     <h1 class="ds-post-title" itemprop="name headline">{{ page.title | escape }}</h1>
                     <p class="ds-post-meta">
                         <time class="ds-dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
