@@ -3,7 +3,7 @@ layout: location
 title: Lahnanlage Dietkirchen
 date: 2023-06-25 00:00:00 +0000
 categories: park
-img_url: /assets/img/lahnanlage-dietkirchen.jpeg
+img_url: assets/img/lahnanlage-dietkirchen.jpeg
 visits:
 - 2023-06-25
 street: Lahnstraße 7

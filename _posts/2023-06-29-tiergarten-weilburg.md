@@ -3,7 +3,7 @@ layout: location
 title: Tiergarten Weilburg
 date: 2023-06-29 20:57:31 +0200
 categories: zoo
-img_url: /assets/img/tiergarten-weilburg.jpeg
+img_url: assets/img/tiergarten-weilburg.jpeg
 visits: 
 - 2023-06-29
 street: Tiergartenstraße 12
