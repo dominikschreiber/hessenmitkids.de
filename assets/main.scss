@@ -3,6 +3,36 @@
 
 @import "minima";
 
+// #region location ===========================================================
+.ds-page-content {
+    flex: 1;
+}
+.ds-post-header {
+    background-image: linear-gradient(#0006, #0006), var(--bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem 3rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 0 .125rem #000, 0 0 .5rem #000a;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .ds-post-header { padding: 3rem 5rem }
+}
+
+@media (min-width: 1024px) {
+    .ds-post-header { padding: 5rem 8rem }
+}
+
+
+.ds-post-meta {
+    margin: 0;
+}
+// #endregion
+// #region dl =================================================================
 dl {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -22,3 +52,4 @@ dt::after {
 dd {
     grid-column: 2;
 }
+// #endregion =================================================================

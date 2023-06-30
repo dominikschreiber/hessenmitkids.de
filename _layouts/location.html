@@ -1,53 +1,88 @@
----
-layout: post
----
-
-<h2>Meine Impression</h2>
-
-{{content}}
-
-<h2>Schnelle Fakten</h2>
-
-<table>
-    <tr>
-        <th>Zuletzt besucht</th>
-        <td>{{ page.visits | last }} (insgesamt {{ page.visits | size }}&times;)</td>
-    </tr>
-    <tr>
-        <th>Kinderwagengerecht</th>
-        <td>{% if page.accessible %}ja{% else %}nein{% endif %}</td>
-    </tr>
-    <tr>
-        <th>Hunde erlaubt</th>
-        <td>{% if page.dogs %}ja{% else %}nein{% endif %}</td>
-    </tr>
-    {% if page.street and page.zip and page.city %}<tr>
-        <th>Adresse</th>
-        <td><address>
-            {{page.street}}<br>
-            {{page.zip}} {{page.city}}
-        </address></td>
-    </tr>{% endif %}
-    {% if page.hours %}<tr>
-        <th>Öffnungszeiten</th>
-        <td>
-            <dl>{% for _ in page.hours %}
-                <dt>{{ _[0] }}</dt>
-                <dd>{{ _[1] }}</dd>
-            {% endfor %}</dl>
-        </td>
-    </tr>{% endif %}
-    {% if page.pricing %}<tr>
-        <th>Eintritt</th>
-        <td>
-            <dl>{% for _ in page.pricing %}
-                <dt>{{ _[0] }}</dt>
-                <dd>{{ _[1] }}</dd>
-            {% endfor %}</dl>
-        </td>
-    </tr>{% endif %}
-    {% if page.ext_url %}<tr>
-        <th>URL</th>
-        <td><a href="{{ page.ext_url }}">{{ page.ext_url }}</a></td>
-    </tr>{% endif %}
-</table>
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+    {%- include head.html -%}
+    <body>
+        {%- include header.html -%}
+        <main class="ds-page-content" aria-label="Content">
+            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+                <header class="ds-post-header" style="--bg: url('{% link {{page.img_url}} %}')">
+                    <h1 class="ds-post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+                    <p class="ds-post-meta">
+                        <time class="ds-dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                            {{ page.date | date: date_format }}
+                        </time>
+                        {%- if page.author -%}
+                        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card"
+                                itemprop="name">{{ page.author }}</span></span>
+                        {%- endif -%}
+                    </p>
+                </header>
+                <div class="wrapper">
+                    <div class="post-content e-content" itemprop="articleBody">
+                        <h2>Meine Impression</h2>
+                
+                        {{content}}
+                
+                        <h2>Schnelle Fakten</h2>
+                
+                        <table>
+                            <tr>
+                                <th>Zuletzt besucht</th>
+                                <td>{{ page.visits | last }} (insgesamt {{ page.visits | size }}&times;)</td>
+                            </tr>
+                            <tr>
+                                <th>Kinderwagengerecht</th>
+                                <td>{% if page.accessible %}ja{% else %}nein{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Hunde erlaubt</th>
+                                <td>{% if page.dogs %}ja{% else %}nein{% endif %}</td>
+                            </tr>
+                            {% if page.street and page.zip and page.city %}<tr>
+                                <th>Adresse</th>
+                                <td>
+                                    <address>
+                                        {{page.street}}<br>
+                                        {{page.zip}} {{page.city}}
+                                    </address>
+                                </td>
+                            </tr>{% endif %}
+                            {% if page.hours %}<tr>
+                                <th>Öffnungszeiten</th>
+                                <td>
+                                    <dl>{% for _ in page.hours %}
+                                        <dt>{{ _[0] }}</dt>
+                                        <dd>{{ _[1] }}</dd>
+                                        {% endfor %}
+                                    </dl>
+                                </td>
+                            </tr>{% endif %}
+                            {% if page.pricing %}<tr>
+                                <th>Eintritt</th>
+                                <td>
+                                    <dl>{% for _ in page.pricing %}
+                                        <dt>{{ _[0] }}</dt>
+                                        <dd>{{ _[1] }}</dd>
+                                        {% endfor %}
+                                    </dl>
+                                </td>
+                            </tr>{% endif %}
+                            {% if page.ext_url %}<tr>
+                                <th>URL</th>
+                                <td><a href="{{ page.ext_url }}">{{ page.ext_url }}</a></td>
+                            </tr>{% endif %}
+                        </table>
+                    </div>
+                    
+                    {%- if site.disqus.shortname -%}
+                    {%- include disqus_comments.html -%}
+                    {%- endif -%}
+                    
+                    <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+                </div>
+            </article>
+        </main>
+        {%- include footer.html -%}
+    </body>
+</html>
