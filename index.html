@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <title>hessenmitkids.de</title>
         <style>
             :root {
                 --nav-height: 3rem;
@@ -162,11 +163,15 @@
                 .reduce((articles, el) => ({...articles, [el.id]: el}), {});
             
             function onHashChange() {
-                if (!(location.hash.slice(1) in articles)) {
+                const id = location.hash.slice(1);    
+
+                if (!(id in articles)) {
                     location.hash = '#!/';
                 }
+                document.title = `${document.getElementById(id).dataset.title} | hessenmitkids.de`;
             }
 
+            window.addEventListener('hashchange', onHashChange);
             onHashChange();
         </script>
     </head>
@@ -178,7 +183,7 @@
             <a href="#!/impressum">Impressum</a>
         </nav>
         <!-- ===== !/ ===================================================== -->
-        <article id="!/">
+        <article id="!/" data-title="Home">
             <h1 style="--bg: url('img/hessen.jpeg')">Hessen mit Kids</h1>
             
             <p>Ich, Dominik, erkunde mit meinen vier Kids unsere Umgebung. Interessante Ausflugsziele sammle ich hier, mit allen Informationen die mir bei der Einschätzung geholfen hätten. Bestimmt helfen sie auch Dir, einen tollen Tag mit Deinen Kids zu planen.</p>
@@ -190,14 +195,14 @@
             </div>
         </article>
         <!-- ===== !/uber-mich ============================================= -->
-        <article id="!/uber-mich">
+        <article id="!/uber-mich" data-title="Über mich">
             <h1>Über mich</h1>
             <p>Ich bin Dominik (32). Mit meinen vier Kids Deborah (7), Samuel (5), Daniel (3) und Miriam (0) unternehme ich Ausflüge in unsere Region, gelegentlich gemeinsam mit meiner Frau Hanna (33).</p>
             <p>Wir wohnen im Goldenen Grund, zwischen Limburg und Frankfurt. Die meisten unserer Ausflüge beginnen also rund um dieses Gebiet.</p>
             <p>Mehr über mich findest Du auf meiner Portfolio-Homepage <a href="https://dominikschreiber.com">dominikschreiber.com</a>.</p>
         </article>
         <!-- ===== !/impressum ============================================ -->
-        <article id="!/impressum">
+        <article id="!/impressum" data-title="Impressum">
             <h1>Impressum</h1>
             <p>hessenmitkids.de ist keine geschäftsmäßige Website. Ein Impressum ist daher nicht erforderlich.</p>
             <p>Du kannst mich jedoch gern kontaktieren über <a href="mailto:info@hessenmitkids.de">info@hessenmitkids.de</a>.</p>
