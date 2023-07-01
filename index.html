@@ -166,10 +166,11 @@
             function onHashChange() {
                 const id = location.hash.slice(1);    
 
-                if (!(id in articles)) {
+                if (id in articles) {
+                    document.title = `${document.getElementById(id).dataset.title} | hessenmitkids.de`;
+                } else {
                     location.hash = '#!/';
                 }
-                document.title = `${document.getElementById(id).dataset.title} | hessenmitkids.de`;
             }
 
             window.addEventListener('hashchange', onHashChange);
